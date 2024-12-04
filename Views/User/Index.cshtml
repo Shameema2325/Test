@@ -1,0 +1,118 @@
+﻿@model List<Test.Models.Usercs>
+@{
+    ViewBag.Title = "Form Example";
+}
+
+<style>
+    .container {
+        max-width: 600px;
+        margin: 0 auto; 
+        padding: 20px;
+    }
+
+    .form-control,
+    .form-select {
+        width: 100%; 
+    }
+
+    .form-check-input:checked {
+        background-color: #0d6efd; /* Default Bootstrap blue for switches */
+        border-color: #0d6efd;
+    }
+
+    /* Style the submit button */
+    .btn-submit {
+        background-color: orange;
+        border-color: orange;
+    }
+
+    /* Align list items properly in the submitted data section */
+    .list-group-item {
+        line-height: 1.8em;
+    }
+</style>
+
+<div class="container mt-5">
+    <h2>Form Example</h2>
+    <form method="post" action="@Url.Action("Submit", "Form")">
+        @Html.AntiForgeryToken()
+
+        <!-- Textbox -->
+        <div class="mb-3">
+            <label for="textBox" class="form-label">Text Box:</label>
+            <input type="text" class="form-control" id="textBox" name="TextBox" placeholder="Enter text" required>
+        </div>
+
+        <!-- Numeric Textbox -->
+        <div class="mb-3">
+            <label for="numericBox" class="form-label">Numeric Text Box:</label>
+            <input type="number" class="form-control" id="numericBox" name="NumericBox" placeholder="Enter number" required>
+        </div>
+
+        <!-- Masked Textbox -->
+        <div class="mb-3">
+            <label for="maskedBox" class="form-label">Masked Text Box (Phone Number):</label>
+            <input type="text" class="form-control" id="maskedBox" name="MaskedBox" placeholder="Enter phone number" required>
+        </div>
+
+        <!-- Date Picker -->
+        <div class="mb-3">
+            <label for="datePicker" class="form-label">Date Picker:</label>
+            <input type="date" class="form-control" id="datePicker" name="DatePicker" required>
+        </div>
+
+        <!-- Date-Time Picker -->
+        <div class="mb-3">
+            <label for="dateTimePicker" class="form-label">Date-Time Picker:</label>
+            <input type="datetime-local" class="form-control" id="dateTimePicker" name="DateTimePicker" required>
+        </div>
+
+        <!-- Switch -->
+        <div class="mb-3 form-check form-switch">
+            <label class="form-check-label" for="switchInput">Toggle Switch:</label>
+            <input class="form-check-input" type="checkbox" id="switchInput" name="SwitchInput">
+        </div>
+
+        <!-- Combo Box -->
+        <div class="mb-3">
+            <label for="comboBox" class="form-label">Combo Box:</label>
+            <select class="form-select" id="comboBox" name="ComboBox" required>
+                <option value="" selected disabled>Choose an option</option>
+                <option value="Option1">Option 1</option>
+                <option value="Option2">Option 2</option>
+                <option value="Option3">Option 3</option>
+            </select>
+        </div>
+
+        <!-- Buttons -->
+        <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+        <button type="reset" class="btn btn-secondary">Clear</button>
+    </form>
+
+    <hr>
+
+    <h3 class="mt-4">Submitted Data</h3>
+    @if (Model != null && Model.Count > 0)
+    {
+        <ul class="list-group">
+            @foreach (var item in Model)
+            {
+                <li class="list-group-item">
+                    <strong>Text:</strong> @item.TextBox <br>
+                    <strong>Number:</strong> @item.NumericBox <br>
+                    <strong>Phone:</strong> @item.MaskedBox <br>
+                    <strong>Date:</strong> @item.DatePicker.ToShortDateString() <br>
+                    <strong>Date-Time:</strong> @item.DateTimePicker.ToString("yyyy-MM-dd HH:mm") <br>
+                    <strong>Switch:</strong> @(item.SwitchInput ? "On" : "Off") <br>
+                    <strong>Combo:</strong> @item.ComboBox <br>
+                    <a href="@Url.Action("Edit", "Form", new { id = item.Id })" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="@Url.Action("Delete", "Form", new { id = item.Id })" class="btn btn-danger btn-sm">Delete</a>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No data submitted yet.</p>
+    }
+</div>

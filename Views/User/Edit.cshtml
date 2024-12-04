@@ -1,0 +1,64 @@
+﻿@model Test.Models.Usercs
+@{
+    ViewBag.Title = "Edit Form Data";
+}
+
+<div class="container mt-5">
+    <h2>Edit Form Data</h2>
+    <form method="post" action="@Url.Action("Edit", "Form")">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" name="Id" value="@Model.Id" />
+
+        <!-- Textbox -->
+        <div class="mb-3">
+            <label for="textBox" class="form-label">Text Box:</label>
+            <input type="text" class="form-control" id="textBox" name="TextBox" value="@Model.TextBox" required>
+        </div>
+
+        <!-- Numeric Textbox -->
+        <div class="mb-3">
+            <label for="numericBox" class="form-label">Numeric Text Box:</label>
+            <input type="number" class="form-control" id="numericBox" name="NumericBox" value="@Model.NumericBox" required>
+        </div>
+
+        <!-- Masked Textbox -->
+        <div class="mb-3">
+            <label for="maskedBox" class="form-label">Masked Text Box (Phone Number):</label>
+            <input type="text" class="form-control" id="maskedBox" name="MaskedBox" value="@Model.MaskedBox" required>
+        </div>
+
+        <!-- Date Picker -->
+        <div class="mb-3">
+            <label for="datePicker" class="form-label">Date Picker:</label>
+            <input type="date" class="form-control" id="datePicker" name="DatePicker" value="@Model.DatePicker.ToString("yyyy-MM-dd")" required>
+        </div>
+
+        <!-- Date-Time Picker -->
+        <div class="mb-3">
+            <label for="dateTimePicker" class="form-label">Date-Time Picker:</label>
+            <input type="datetime-local" class="form-control" id="dateTimePicker" name="DateTimePicker" value="@Model.DateTimePicker.ToString("yyyy-MM-ddTHH:mm")" required>
+        </div>
+
+        <!-- Switch -->
+        <div class="mb-3 form-check form-switch">
+            <label class="form-check-label" for="switchInput">Toggle Switch:</label>
+            <input class="form-check-input" type="checkbox" id="switchInput" name="SwitchInput" @(Model.SwitchInput ? "checked" : "")>
+        </div>
+
+        <!-- Combo Box -->
+        <div class="mb-3">
+            <label for="comboBox" class="form-label">Combo Box:</label>
+            <select class="form-select" id="comboBox" name="ComboBox" required>
+                <option value="" selected disabled>Choose an option</option>
+                <option value="Option1">Option 1</option>
+                <option value="Option2">Option 2</option>
+                <option value="Option3">Option 3</option>
+            </select>
+        </div>        
+
+        <!-- Buttons -->
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="@Url.Action("Index", "Form")" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
