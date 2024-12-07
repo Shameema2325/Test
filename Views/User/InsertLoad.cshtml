@@ -1,0 +1,157 @@
+﻿@model Test.Models.User
+
+@{
+    ViewBag.Title = "Insert User";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">Insert User</h2>
+
+    @if (TempData["Msg"] != null)
+    {
+        <div class="alert alert-info">
+            @TempData["Msg"]
+        </div>
+    }
+
+    <form asp-action="Insert" method="post">
+        <div class="row">
+            <!-- Name -->
+            <div class="col-md-6 mb-3">
+                <label for="Name" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="Name" name="Name" value="@Model?.Name" placeholder="Enter your name" required>
+            </div>
+
+            <!-- Age -->
+            <div class="col-md-6 mb-3">
+                <label for="Age" class="form-label">Age:</label>
+                <input type="number" class="form-control" id="Age" name="Age" value="@Model?.Age" placeholder="Enter your age" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Phone Number -->
+            <div class="col-md-6 mb-3">
+                <label for="PhoneNumber" class="form-label">Phone Number:</label>
+                <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" value="@Model?.PhoneNumber" placeholder="Enter your phone number" required>
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="col-md-6 mb-3">
+                <label for="DateOfBirth" class="form-label">Date of Birth:</label>
+                <input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" value="@Model?.DateOfBirth.ToString("yyyy-MM-dd")" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Date and Time -->
+            <div class="col-md-6 mb-3">
+                <label for="DateTime" class="form-label">Date and Time:</label>
+                <input type="datetime-local" class="form-control" id="DateTime" name="DateTime" value="@Model?.Time.ToString("yyyy-MM-ddTHH:mm")" required>
+            </div>
+
+            <!-- Qualification (ComboBox) -->
+            <div class="col-md-6 mb-3">
+                <label for="Qualification" class="form-label">Qualification:</label>
+                <select class="form-control" id="Qualification" name="Qualification" required>
+                    <option value="">Select Qualification</option>
+                    <option value="HighSchool">High School</option>
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="Master">Master</option>
+                    <option value="PhD">PhD</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Emirates (Dropdown) -->
+            <div class="col-md-6 mb-3">
+                <label for="Emirates" class="form-label">Emirates:</label>
+                <select class="form-control" id="Emirates" name="Emirates" required>
+                    <option value="">Select Emirates</option>
+                    <option value="Dubai">Dubai</option>
+                    <option value="AbuDhabi">Abu Dhabi</option>
+                    <option value="Sharjah">Sharjah</option>
+                    <option value="Ajman">Ajman</option>
+                    <option value="Fujairah">Fujairah</option>
+                    <option value="UmmAlQuwain">Umm Al Quwain</option>
+                    <option value="RasAlKhaimah">Ras Al Khaimah</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label" for="IsAvailable">Is Available</label>
+                <div class="custom-switch">
+                    <!-- Hidden input for unchecked state -->
+                    <input type="hidden" name="IsAvailable" value="false" />
+
+                    <!-- Checkbox input -->
+                    <input type="checkbox" class="custom-switch-input" id="IsAvailable" name="IsAvailable"
+                           value="true" @(Model?.IsAvailable == true ? "checked" : "") />
+
+                    <label class="custom-switch-label" for="IsAvailable"></label>
+                </div>
+            </div>
+
+
+
+            <div class="text-center">
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-orange">Submit</button>
+                <button type="reset" class="btn btn-secondary">Clear</button>
+            </div>
+    </form>
+</div>
+
+<style>
+    /* Custom Switch */
+    .custom-switch {
+        display: inline-block;
+        position: relative;
+    }
+
+    .custom-switch-input {
+        display: none;
+    }
+
+    .custom-switch-label {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        width: 50px;
+        height: 25px;
+        background-color: #ccc;
+        border-radius: 25px;
+        transition: 0.3s;
+    }
+
+        .custom-switch-label:before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 19px;
+            height: 19px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+    .custom-switch-input:checked + .custom-switch-label {
+        background-color: #ffa500; /* Orange */
+    }
+
+        .custom-switch-input:checked + .custom-switch-label:before {
+            transform: translateX(25px);
+        }
+
+    .btn-orange {
+        background-color: #ff6700; /* Orange Button */
+        border: none;
+        color: white;
+    }
+
+        .btn-orange:hover {
+            background-color: #ff4500; /* Darker Orange on Hover */
+        }
+</style>

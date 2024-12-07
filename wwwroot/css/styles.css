@@ -1,0 +1,101 @@
+﻿namespace Test.wwwroot.css {
+
+public class styles
+{
+
+.form-box
+{
+    background-color: #f5f5dc; /* Cream background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-control-lg, .form-select-lg {
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.custom-switch {
+    display: inline-block;
+    position: relative;
+}
+
+.custom-switch-input {
+    display: none;
+}
+
+.custom-switch-label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+    .custom-switch-label:before {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 19px;
+        height: 19px;
+        background-color: white;
+        border-radius: 50%;
+        transition: 0.3s;
+    }
+
+.custom-switch-input:checked + .custom-switch-label {
+    background-color: #ff5733; /* Orange color for checked state */
+}
+
+    .custom-switch-input:checked + .custom-switch-label:before {
+        transform: translateX(25px);
+    }
+
+.btn-lg {
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+}
+
+.btn-save {
+    background-color: #ff5733; /* Orange button */
+    border: none;
+}
+
+    .btn-save:hover {
+        background-color: #e94e2b;
+    }
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+.container {
+    max-width: 800px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.alert-info {
+    font-size: 1.1rem;
+    color: #0056b3;
+    border: 1px solid #0056b3;
+    background-color: #cce5ff;
+}
+
+}
+}
