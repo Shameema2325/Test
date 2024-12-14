@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 using Test.Models;
 
 namespace Test.Controllers
@@ -8,7 +9,7 @@ namespace Test.Controllers
     {
         UserDB userDB = new UserDB();
         public IActionResult InsertLoad()
-        { 
+        {             
             return View();
         }
 
