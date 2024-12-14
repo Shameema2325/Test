@@ -55,6 +55,14 @@
 </style>
 
 <div class="table-container">
+
+    @if (TempData["Msg"] != null)
+    {
+        <div class="alert alert-info">
+            @TempData["Msg"]
+        </div>
+    }
+
     <h2>Users List</h2>
 
     @if (Model != null && Model.Count > 0)
@@ -82,7 +90,7 @@
                         <td>@user.Name</td>
                         <td>@user.Age</td>
                         <td>@user.PhoneNumber</td>
-                        <td>@user.DateOfBirth.ToShortDateString()</td>
+                        <td>@user.DateOfBirth</td>
                         <td>@user.Time</td>
                         <td>@(user.IsAvailable ? "Yes" : "No")</td>
                         <td>@user.Qualification</td>

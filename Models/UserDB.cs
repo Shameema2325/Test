@@ -49,6 +49,12 @@ namespace Test.Models
             var users = new List<User>();
             try
             {
+
+                if (user.Time < new DateTime(1753, 1, 1))
+                {
+                    user.Time = DateTime.Now;
+                }
+
                 SqlCommand cmd = new SqlCommand("sp_display_all", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -112,6 +118,11 @@ namespace Test.Models
         {
             try
             {
+                if (user.Time < new DateTime(1753, 1, 1))
+                {
+                    user.Time = DateTime.Now;
+                }
+
                 SqlCommand cmd = new SqlCommand("sp_edit_user", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 

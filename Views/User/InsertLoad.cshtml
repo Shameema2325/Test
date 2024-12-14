@@ -6,13 +6,6 @@
 
 <div class="container mt-5">
 
-    @if (TempData["Msg"] != null)
-    {
-        <div class="alert alert-info">
-            @TempData["Msg"]
-        </div>
-    }
-
     <form asp-action="Insert" method="post">
 
             <!-- Name -->
@@ -74,7 +67,7 @@
                 <label for="Qualification" class="form-label">Highest Qualification:</label>
                 <select class="form-control" id="Qualification" name="Qualification" required>
                     <option value="">Select Qualification</option>
-                    <option value="HighSchool">High School</option>
+                    <option value="HighSchool" >High School</option>
                     <option value="Bachelor">Bachelor</option>
                     <option value="Master">Master</option>
                     <option value="PhD">PhD</option>
@@ -105,6 +98,9 @@
                 <button type="reset" class="btn btn-secondary">Clear</button>
             </div>
     </form>
+    <div>
+        <a href="@Url.Action("UsersLoad", "Display")">User's List</a>
+    </div>
 </div>
 <script>
     document.getElementById('IsAvailable').addEventListener('change', function () {
