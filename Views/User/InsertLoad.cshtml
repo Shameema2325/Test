@@ -5,7 +5,6 @@
 }
 
 <div class="container mt-5">
-    <h2 class="text-center">Insert User</h2>
 
     @if (TempData["Msg"] != null)
     {
@@ -15,7 +14,7 @@
     }
 
     <form asp-action="Insert" method="post">
-        <div class="row">
+
             <!-- Name -->
             <div class="col-md-6 mb-3">
                 <label for="Name" class="form-label">Name:</label>
@@ -27,33 +26,52 @@
                 <label for="Age" class="form-label">Age:</label>
                 <input type="number" class="form-control" id="Age" name="Age" value="@Model?.Age" placeholder="Enter your age" required>
             </div>
-        </div>
 
-        <div class="row">
-            <!-- Phone Number -->
-            <div class="col-md-6 mb-3">
-                <label for="PhoneNumber" class="form-label">Phone Number:</label>
-                <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" value="@Model?.PhoneNumber" placeholder="Enter your phone number" required>
-            </div>
+        <!-- Phone Number -->
+        <div class="col-md-6 mb-3">
+            <label for="PhoneNumber" class="form-label">Phone Number:</label>
+            <input type="text"
+                   class="form-control"
+                   id="PhoneNumber"
+                   name="PhoneNumber"
+                   value="@Model?.PhoneNumber"
+                   placeholder="e.g., 0551234567"
+                   required
+                   pattern="(04|05[0-9]|06|07|09)\d{7}"
+                   title="Phone number must start with a valid UAE code (e.g., 04, 055) and be 9 digits long. Example: 0551234567">
+        </div>
 
             <!-- Date of Birth -->
             <div class="col-md-6 mb-3">
                 <label for="DateOfBirth" class="form-label">Date of Birth:</label>
                 <input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" value="@Model?.DateOfBirth.ToString("yyyy-MM-dd")" required>
             </div>
-        </div>
 
-        <div class="row">
+        
             <!-- Date and Time -->
             <div class="col-md-6 mb-3">
                 <label for="DateTime" class="form-label">Date and Time:</label>
                 <input type="datetime-local" class="form-control" id="DateTime" name="DateTime" value="@Model?.Time.ToString("yyyy-MM-ddTHH:mm")" required>
             </div>
 
+        <div class="col-md-6 mb-3">
+            <label class="form-label" for="IsAvailable">Is Available</label>
+            <div class="custom-switch">
+                <!-- Hidden input for unchecked state -->
+                <input type="hidden" name="IsAvailable" value="false" />
+
+                <!-- Checkbox input -->
+                <input type="checkbox" class="custom-switch-input" id="IsAvailable" name="IsAvailable"
+                       value="true" @(Model?.IsAvailable == true ? "checked" : "") />
+
+                <label class="custom-switch-label" for="IsAvailable"></label>
+            </div>
+        </div>
+
             <!-- Qualification (ComboBox) -->
             <div class="col-md-6 mb-3">
                 <label for="Qualification" class="form-label">Qualification:</label>
-                <select class="form-control" id="Qualification" name="Qualification" required>
+                <select class="form-control" id="Qualification" name="Qualification" multiple required>
                     <option value="">Select Qualification</option>
                     <option value="HighSchool">High School</option>
                     <option value="Bachelor">Bachelor</option>
@@ -61,9 +79,8 @@
                     <option value="PhD">PhD</option>
                 </select>
             </div>
-        </div>
 
-        <div class="row">
+    
             <!-- Emirates (Dropdown) -->
             <div class="col-md-6 mb-3">
                 <label for="Emirates" class="form-label">Emirates:</label>
@@ -77,21 +94,7 @@
                     <option value="UmmAlQuwain">Umm Al Quwain</option>
                     <option value="RasAlKhaimah">Ras Al Khaimah</option>
                 </select>
-            </div>
-
-            <div class="col-md-6 mb-3">
-                <label class="form-label" for="IsAvailable">Is Available</label>
-                <div class="custom-switch">
-                    <!-- Hidden input for unchecked state -->
-                    <input type="hidden" name="IsAvailable" value="false" />
-
-                    <!-- Checkbox input -->
-                    <input type="checkbox" class="custom-switch-input" id="IsAvailable" name="IsAvailable"
-                           value="true" @(Model?.IsAvailable == true ? "checked" : "") />
-
-                    <label class="custom-switch-label" for="IsAvailable"></label>
-                </div>
-            </div>
+            </div>          
 
 
 

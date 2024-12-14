@@ -42,6 +42,7 @@ namespace Test.Controllers
             {
                 var result = userDB.Delete(id);  
                 TempData["Msg"] = result;
+                return RedirectToAction("UsersLoad", "Display");
             }
             catch (Exception ex)
             {
