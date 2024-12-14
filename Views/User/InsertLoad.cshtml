@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="~/css/styles.css" />
 </head>
 
-<div class="container mt-5">
+<body>
 
-    <form asp-action="Insert" method="post">
+    <div class="container mt-5">
+
+        <form asp-action="Insert" method="post">
 
             <!-- Name -->
             <div class="col-md-6 mb-3">
@@ -23,19 +25,19 @@
                 <input type="number" class="form-control" id="Age" name="Age" value="@Model?.Age" placeholder="Enter your age" required>
             </div>
 
-        <!-- Phone Number -->
-        <div class="col-md-6 mb-3">
-            <label for="PhoneNumber" class="form-label">Phone Number:</label>
-            <input type="text"
-                   class="form-control"
-                   id="PhoneNumber"
-                   name="PhoneNumber"
-                   value="@Model?.PhoneNumber"
-                   placeholder="e.g., 0551234567"
-                   required
-                   pattern="(04|05[0-9]|06|07|09)\d{7}"
-                   title="Phone number must start with a valid UAE code (e.g., 04, 055) and be 9 digits long. Example: 0551234567">
-        </div>
+            <!-- Phone Number -->
+            <div class="col-md-6 mb-3">
+                <label for="PhoneNumber" class="form-label">Phone Number:</label>
+                <input type="text"
+                       class="form-control"
+                       id="PhoneNumber"
+                       name="PhoneNumber"
+                       value="@Model?.PhoneNumber"
+                       placeholder="e.g., 0551234567"
+                       required
+                       pattern="(04|05[0-9]|06|07|09)\d{7}"
+                       title="Phone number must start with a valid UAE code (e.g., 04, 055) and be 9 digits long. Example: 0551234567">
+            </div>
 
             <!-- Date of Birth -->
             <div class="col-md-6 mb-3">
@@ -43,7 +45,7 @@
                 <input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" value="@Model?.DateOfBirth.ToString("yyyy-MM-dd")" required>
             </div>
 
-        
+
             <!-- Date and Time -->
             <div class="col-md-6 mb-3">
                 <label for="DateTime" class="form-label">Date and Time:</label>
@@ -70,14 +72,14 @@
                 <label for="Qualification" class="form-label">Highest Qualification:</label>
                 <select class="form-control" id="Qualification" name="Qualification" required>
                     <option value="">Select Qualification</option>
-                    <option value="HighSchool" >High School</option>
+                    <option value="HighSchool">High School</option>
                     <option value="Bachelor">Bachelor</option>
                     <option value="Master">Master</option>
                     <option value="PhD">PhD</option>
                 </select>
             </div>
 
-    
+
             <!-- Emirates (Dropdown) -->
             <div class="col-md-6 mb-3">
                 <label for="Emirates" class="form-label">Emirates:</label>
@@ -91,7 +93,7 @@
                     <option value="UmmAlQuwain">Umm Al Quwain</option>
                     <option value="RasAlKhaimah">Ras Al Khaimah</option>
                 </select>
-            </div>          
+            </div>
 
 
 
@@ -100,68 +102,15 @@
                 <button type="submit" class="btn btn-orange">Submit</button>
                 <button type="reset" class="btn btn-secondary">Clear</button>
             </div>
-    </form>
-    <div>
-        <a href="@Url.Action("UsersLoad", "User")">User's List</a>
+        </form>
+        <div>
+            <a href="@Url.Action("UsersLoad", "User")">User's List</a>
+        </div>
     </div>
-</div>
-<script>
-    document.getElementById('IsAvailable').addEventListener('change', function () {
-        this.previousElementSibling.value = this.checked ? 'true' : 'false';
-    });
-</script>
 
-@* 
-<style>
-    /* Custom Switch */
-    .custom-switch {
-        display: inline-block;
-        position: relative;
-    }
-
-    .custom-switch-input {
-        display: none;
-    }
-
-    .custom-switch-label {
-        display: block;
-        position: relative;
-        cursor: pointer;
-        width: 50px;
-        height: 25px;
-        background-color: #ccc;
-        border-radius: 25px;
-        transition: 0.3s;
-    }
-
-        .custom-switch-label:before {
-            content: '';
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 19px;
-            height: 19px;
-            background-color: white;
-            border-radius: 50%;
-            transition: 0.3s;
-        }
-
-    .custom-switch-input:checked + .custom-switch-label {
-        background-color: #ffa500; /* Orange */
-    }
-
-        .custom-switch-input:checked + .custom-switch-label:before {
-            transform: translateX(25px);
-        }
-
-    .btn-orange {
-        background-color: #ff6700; /* Orange Button */
-        border: none;
-        color: white;
-    }
-
-        .btn-orange:hover {
-            background-color: #ff4500; /* Darker Orange on Hover */
-        }
-</style>
- *@
+    <script>
+        document.getElementById('IsAvailable').addEventListener('change', function () {
+            this.previousElementSibling.value = this.checked ? 'true' : 'false';
+        });
+    </script>
+</body>
