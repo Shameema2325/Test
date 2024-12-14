@@ -20,14 +20,57 @@ namespace Test.Controllers
             {
                     var result = userDB.Insert(user);
                     TempData["Msg"] = result;
-                    return RedirectToAction("UsersLoad", "Display");
+                    return RedirectToAction("UsersLoad", "User");
             }
             catch (Exception ex)
             {
                 TempData["Msg"] = ex.Message;
-                return RedirectToAction("InsertLoad","Display");
+                return RedirectToAction("InsertLoad","User");
             }
            
+        }
+
+        public IActionResult UsersLoad(User user)
+        {
+            List<User> userList = userDB.DisplayAll(user);
+            return View(userList);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var user = userDB.Display(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = userDB.Edit(user);
+                TempData["Msg"] = result;
+            }
+            return RedirectToAction("UsersLoad", "User");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var result = userDB.Delete(id);
+                TempData["Msg"] = result;
+                return RedirectToAction("UsersLoad", "User");
+            }
+            catch (Exception ex)
+            {
+                TempData["Msg"] = ex.Message;
+            }
+
+            return RedirectToAction("UsersLoad", "User");
         }
 
     }

@@ -96,8 +96,8 @@
                         <td>@user.Qualification</td>
                         <td>@user.Emirates</td>
                         <td>
-                            <a href="@Url.Action("Edit", "Display", new { id = user.Id })" class="btn-action btn-edit">Edit</a>
-                            <a href="@Url.Action("Delete", "Display", new { id = user.Id })" class="btn-action btn-delete">Delete</a>
+                            <a href="@Url.Action("Edit", "User", new { id = user.Id })" class="btn-action btn-edit">Edit</a>
+                            <a href="@Url.Action("Delete", "User", new { id = user.Id })" class="btn-action btn-delete">Delete</a>
                         </td>
                     </tr>
                 }
@@ -106,11 +106,11 @@
         <div>
             <a href="@Url.Action("InsertLoad", "User")">Back to Insert</a>
         </div>
-        
+
     }
     else
     {
         <p>No users found.</p>
     }
-    
+
 </div>
