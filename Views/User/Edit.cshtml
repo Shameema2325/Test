@@ -3,7 +3,9 @@
 @{
     ViewBag.Title = "Edit User";
 }
-
+<head>
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
 <!-- Heading Section -->
 <h2 class="text-center mb-4">Edit User</h2>
 
@@ -97,14 +99,13 @@
         <button type="submit" class="btn btn-orange">Save Changes</button>
     </div>
 </form>
-</div>
 <script>
     document.getElementById('IsAvailable').addEventListener('change', function () {
         this.previousElementSibling.value = this.checked ? 'true' : 'false';
     });
 </script>
 
-
+@* 
 <style>
     /* Custom Switch */
     .custom-switch {
@@ -156,4 +157,4 @@
         .btn-orange:hover {
             background-color: #ff4500; /* Darker Orange on Hover */
         }
-</style>
+</style> *@

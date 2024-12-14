@@ -1,22 +1,4 @@
-﻿namespace Test.wwwroot.css {
-
-public class styles
-{
-
-.form-box
-{
-    background-color: #f5f5dc; /* Cream background */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.form-control-lg, .form-select-lg {
-    font-size: 1.1rem;
-    padding: 10px 15px;
-    border-radius: 8px;
-}
-
+﻿
 .custom-switch {
     display: inline-block;
     position: relative;
@@ -37,65 +19,80 @@ public class styles
     transition: 0.3s;
 }
 
-    .custom-switch-label:before {
-        content: '';
-        position: absolute;
-        top: 3px;
-        left: 3px;
-        width: 19px;
-        height: 19px;
-        background-color: white;
-        border-radius: 50%;
-        transition: 0.3s;
-    }
-
-.custom-switch-input:checked + .custom-switch-label {
-    background-color: #ff5733; /* Orange color for checked state */
+.custom-switch-label:before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 19px;
+    height: 19px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
 }
 
-    .custom-switch-input:checked + .custom-switch-label:before {
+.custom-switch-input:checked + .custom-switch-label {
+    background-color: #ffa500; /* Orange */
+}
+
+.custom-switch-input:checked + .custom-switch-label:before {
         transform: translateX(25px);
     }
 
-.btn-lg {
-    font-size: 1.2rem;
-    padding: 12px 24px;
-    border-radius: 8px;
+.btn-orange {
+    background-color: #ff6700; /* Orange Button */
+    border: none;
+    color: white;
 }
 
-.btn-save {
-    background-color: #ff5733; /* Orange button */
+.btn-orange:hover {
+    background-color: #ff4500; /* Darker Orange on Hover */
+}
+
+.table-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-action {
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: white;
     border: none;
 }
 
-    .btn-save:hover {
-        background-color: #e94e2b;
-    }
-
-.btn-danger {
+.btn-delete {
     background-color: #dc3545;
+    color: white;
     border: none;
-}
-
-    .btn-danger:hover {
-        background-color: #c82333;
-    }
-
-.container {
-    max-width: 800px;
-}
-
-h2 {
-    font-size: 2rem;
-    color: #333;
-}
-
-.alert-info {
-    font-size: 1.1rem;
-    color: #0056b3;
-    border: 1px solid #0056b3;
-    background-color: #cce5ff;
-}
-
-}
 }

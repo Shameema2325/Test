@@ -4,113 +4,71 @@
     ViewBag.Title = "Users List";
 }
 
-<style>
-    .table-container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 20px;
-    }
+<head>
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
+<body>
 
-    th, td {
-        padding: 10px;
-        text-align: left;
-        border: 1px solid #ddd;
-    }
 
-    th {
-        background-color: #f4f4f4;
-    }
+    <div class="table-container">
 
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
+        @if (TempData["Msg"] != null)
+        {
+            <div class="alert alert-info">
+                @TempData["Msg"]
+            </div>
+        }
 
-    tr:hover {
-        background-color: #f1f1f1;
-    }
+        <h2>Users List</h2>
 
-    .btn-action {
-        padding: 5px 10px;
-        font-size: 14px;
-        margin-right: 5px;
-    }
-
-    .btn-edit {
-        background-color: #ffc107;
-        color: white;
-        border: none;
-    }
-
-    .btn-delete {
-        background-color: #dc3545;
-        color: white;
-        border: none;
-    }
-</style>
-
-<div class="table-container">
-
-    @if (TempData["Msg"] != null)
-    {
-        <div class="alert alert-info">
-            @TempData["Msg"]
-        </div>
-    }
-
-    <h2>Users List</h2>
-
-    @if (Model != null && Model.Count > 0)
-    {
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Phone Number</th>
-                    <th>Date of Birth</th>
-                    <th>Time</th>
-                    <th>Is Available</th>
-                    <th>Qualification</th>
-                    <th>Emirates</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var user in Model)
-                {
+        @if (Model != null && Model.Count > 0)
+        {
+            <table>
+                <thead>
                     <tr>
-                        <td>@user.Id</td>
-                        <td>@user.Name</td>
-                        <td>@user.Age</td>
-                        <td>@user.PhoneNumber</td>
-                        <td>@user.DateOfBirth</td>
-                        <td>@user.Time</td>
-                        <td>@(user.IsAvailable ? "Yes" : "No")</td>
-                        <td>@user.Qualification</td>
-                        <td>@user.Emirates</td>
-                        <td>
-                            <a href="@Url.Action("Edit", "User", new { id = user.Id })" class="btn-action btn-edit">Edit</a>
-                            <a href="@Url.Action("Delete", "User", new { id = user.Id })" class="btn-action btn-delete">Delete</a>
-                        </td>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Phone Number</th>
+                        <th>Date of Birth</th>
+                        <th>Time</th>
+                        <th>Is Available</th>
+                        <th>Qualification</th>
+                        <th>Emirates</th>
+                        <th>Actions</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-        <div>
-            <a href="@Url.Action("InsertLoad", "User")">Back to Insert</a>
-        </div>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Id</td>
+                            <td>@user.Name</td>
+                            <td>@user.Age</td>
+                            <td>@user.PhoneNumber</td>
+                            <td>@user.DateOfBirth</td>
+                            <td>@user.Time</td>
+                            <td>@(user.IsAvailable ? "Yes" : "No")</td>
+                            <td>@user.Qualification</td>
+                            <td>@user.Emirates</td>
+                            <td>
+                                <a href="@Url.Action("Edit", "User", new { id = user.Id })" class="btn-action btn-edit">Edit</a>
+                                <a href="@Url.Action("Delete", "User", new { id = user.Id })" class="btn-action btn-delete">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div>
+                <a href="@Url.Action("InsertLoad", "User")">Back to Insert</a>
+            </div>
 
-    }
-    else
-    {
-        <p>No users found.</p>
-    }
+        }
+        else
+        {
+            <p>No users found.</p>
+        }
 
-</div>
+    </div>
+</body>
